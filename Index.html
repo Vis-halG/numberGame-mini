@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 and 100</p>
+        <input type="number" id="guess" min="1" max="100">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p id="message"></p>
+        <p>Attempts: <span id="attempts">0</span></p>
+    </div>
+    
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            let userGuess = document.getElementById('guess').value;
+            let message = document.getElementById('message');
+            let attemptsDisplay = document.getElementById('attempts');
+            attempts++;
+            attemptsDisplay.textContent = attempts;
+
+            if (userGuess < 1 || userGuess > 100 || isNaN(userGuess)) {
+                message.textContent = "Please enter a valid number between 1 and 100.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (userGuess == randomNumber) {
+                message.textContent = `🎉 Congratulations! You guessed it in ${attempts} attempts.`;
+                message.style.color = "green";
+            } else if (userGuess < randomNumber) {
+                message.textContent = "Too low! Try again.";
+                message.style.color = "blue";
+            } else {
+                message.textContent = "Too high! Try again.";
+                message.style.color = "orange";
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- 🚀 Just Built a Number Guessing Game! 🎯
+
+Excited to share that I recently built a simple Number Guessing Game using HTML, CSS, and JavaScript! This project helped me solidify some key front-end development concepts.
+
+🔥 What I Learned:
+✅ DOM Manipulation – Dynamically updating content using document.getElementById().
+✅ Event Handling – Handling user interactions through button clicks.
+✅ Conditional Logic – Implementing game logic to provide feedback on guesses.
+✅ State Management – Tracking the number of attempts and updating the UI.
+✅ Math.random() – Generating a random number between 1 and 100.
+✅ Responsive UI – Styled with CSS to ensure a smooth user experience.
+
+This small project reinforced my JavaScript skills and was a great hands-on learning experience! 🙌
+
+💡 Next, I might add features like difficulty levels, a timer, or a reset button.
+
+Would love to hear your thoughts! Have you built a similar project before? Drop your suggestions in the comments! 👇
+
+#WebDevelopment #JavaScript #Coding #Learning #Frontend #Projects -->
